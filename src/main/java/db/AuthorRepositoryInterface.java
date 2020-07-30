@@ -1,34 +1,45 @@
 package db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import domain.Book;
+import domain.Author;
 
 @Repository
-public interface BookInterface extends CrudRepository<Book, Long>  {
-
+public interface AuthorRepositoryInterface extends CrudRepository<Author, Long> {
+    
 	@Override
-	default Iterable<Book> findAll() {
-		return null;
+	default Iterable<Author> findAll() {
+		
+		List<Author> authors = new ArrayList<>();
+		
+		authors.add(new Author("Николай Островский"));
+		authors.add(new Author("Антуан де Сент-Экзюпери"));
+		authors.add(new Author("Михаил Шолохов"));
+		authors.add(new Author("Лев Толстой"));
+		
+		return authors;
 	}
 	
 //	@Override
-//	default <S extends Book> S save(S entity) {
+//	default <S extends Author> S save(S entity) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
 //	@Override
-//	default <S extends Book> Iterable<S> saveAll(Iterable<S> entities) {
+//	default <S extends Author> Iterable<S> saveAll(Iterable<S> entities) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
 //	@Override
-//	default Optional<Book> findById(Long id) {
+//	default Optional<Author> findById(Long id) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
@@ -40,7 +51,7 @@ public interface BookInterface extends CrudRepository<Book, Long>  {
 //	}
 //
 //	@Override
-//	default Iterable<Book> findAllById(Iterable<Long> ids) {
+//	default Iterable<Author> findAllById(Iterable<Long> ids) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
@@ -58,13 +69,13 @@ public interface BookInterface extends CrudRepository<Book, Long>  {
 //	}
 //
 //	@Override
-//	default void delete(Book entity) {
+//	default void delete(Author entity) {
 //		// TODO Auto-generated method stub
 //		
 //	}
 //
 //	@Override
-//	default void deleteAll(Iterable<? extends Book> entities) {
+//	default void deleteAll(Iterable<? extends Author> entities) {
 //		// TODO Auto-generated method stub
 //		
 //	}

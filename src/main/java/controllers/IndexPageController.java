@@ -7,6 +7,7 @@ package controllers;
 //import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
@@ -19,9 +20,9 @@ import domain.Book;
 import domain.Genre;
 
 @Controller
-public class StartPageController {
+public class IndexPageController {
 	
-	@RequestMapping("index")
+	@GetMapping("index")
 	  public String getIndex(Model model) {
 		Author x = new Author("Николай Островский");
 		Author y = new Author("Антуан де Сент-Экзюпери");

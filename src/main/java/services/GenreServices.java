@@ -1,10 +1,10 @@
 package services;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import db.GenreRepositoryInterface;
 import domain.Genre;
 
 @Service
@@ -13,16 +13,12 @@ public class GenreServices {
 	public GenreServices() {
 	}
 	
-	public List<Genre> getAllGenres(){
-		
-		List<Genre> genres = new ArrayList<>();
-				
-		genres.add(new Genre("Революционное мясо"));
-		genres.add(new Genre("Для покурить"));
-		genres.add(new Genre("Революция Мексикана"));
-		genres.add(new Genre("Мясо по французки"));
-		
-		return genres;
+	@Inject
+	private GenreRepositoryInterface genreRepositoryInterface;
+	
+	public Iterable<Genre> getAllGenres(){
+	
+		return genreRepositoryInterface.findAll();
 	}
 
 }

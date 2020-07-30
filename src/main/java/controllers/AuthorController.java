@@ -18,7 +18,7 @@ public class AuthorController {
 		
 		model.addAttribute("authors", authorServices.getAllAuthors());
 		
-		return "authors";
+		return "author/index";
 	}
 	
 }

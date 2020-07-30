@@ -1,28 +1,24 @@
 package services;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import db.ClientRepositoryInterface;
 import domain.Client;
 
 @Service
 public class ClientServices {
-	
+		
 	public ClientServices() {
 	}
 	
-	public List<Client> getClients(){
+	@Inject	
+	private ClientRepositoryInterface clientRepositoryInterface;
+	
+	public Iterable<Client> getAllClients(){
 		
-		List<Client> clients = new ArrayList<>();
-		
-		clients.add(new Client("Гица Гаванос"));
-		clients.add(new Client("Василе Конилэ"));
-		clients.add(new Client("Петру Маранделу"));
-		clients.add(new Client("Миричика Курунсус"));
-		
-		return clients;
+		return clientRepositoryInterface.findAll(); 
 	}
 
 }
