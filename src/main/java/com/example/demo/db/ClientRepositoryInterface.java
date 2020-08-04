@@ -1,4 +1,4 @@
-package db;
+package com.example.demo.db;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,38 +8,38 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import domain.Author;
+import com.example.demo.domain.Client;
 
 @Repository
-public interface AuthorRepositoryInterface extends CrudRepository<Author, Long> {
-    
+public interface ClientRepositoryInterface extends CrudRepository<Client, Long>  {
+
 	@Override
-	default Iterable<Author> findAll() {
+	default Iterable<Client> findAll() {
 		
-		List<Author> authors = new ArrayList<>();
+		List<Client> clients = new ArrayList<>();
 		
-		authors.add(new Author("Николай Островский"));
-		authors.add(new Author("Антуан де Сент-Экзюпери"));
-		authors.add(new Author("Михаил Шолохов"));
-		authors.add(new Author("Лев Толстой"));
+		clients.add(new Client("Гица Гаванос"));
+		clients.add(new Client("Василе Конилэ"));
+		clients.add(new Client("Петру Маранделу"));
+		clients.add(new Client("Миричика Курунсус"));
 		
-		return authors;
+		return clients;
 	}
 	
 //	@Override
-//	default <S extends Author> S save(S entity) {
+//	default <S extends Client> S save(S entity) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
 //	@Override
-//	default <S extends Author> Iterable<S> saveAll(Iterable<S> entities) {
+//	default <S extends Client> Iterable<S> saveAll(Iterable<S> entities) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
 //	@Override
-//	default Optional<Author> findById(Long id) {
+//	default Optional<Client> findById(Long id) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
@@ -48,10 +48,10 @@ public interface AuthorRepositoryInterface extends CrudRepository<Author, Long> 
 //	default boolean existsById(Long id) {
 //		// TODO Auto-generated method stub
 //		return false;
-//	}
+//	}	
 //
 //	@Override
-//	default Iterable<Author> findAllById(Iterable<Long> ids) {
+//	default Iterable<Client> findAllById(Iterable<Long> ids) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
@@ -69,13 +69,13 @@ public interface AuthorRepositoryInterface extends CrudRepository<Author, Long> 
 //	}
 //
 //	@Override
-//	default void delete(Author entity) {
+//	default void delete(Client entity) {
 //		// TODO Auto-generated method stub
 //		
 //	}
 //
 //	@Override
-//	default void deleteAll(Iterable<? extends Author> entities) {
+//	default void deleteAll(Iterable<? extends Client> entities) {
 //		// TODO Auto-generated method stub
 //		
 //	}

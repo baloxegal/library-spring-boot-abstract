@@ -1,4 +1,4 @@
-package controllers;
+package com.example.demo.controllers;
 
 //import java.io.BufferedReader;
 //import java.io.FileNotFoundException;
@@ -9,15 +9,16 @@ package controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.domain.Author;
+import com.example.demo.domain.Book;
+import com.example.demo.domain.Genre;
+
 import org.springframework.ui.Model;
 
 
 import java.util.ArrayList;
 import java.util.List;
-
-import domain.Author;
-import domain.Book;
-import domain.Genre;
 
 @Controller
 public class IndexPageController {

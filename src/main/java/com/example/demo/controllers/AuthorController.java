@@ -1,4 +1,4 @@
-package controllers;
+package com.example.demo.controllers;
 
 import javax.inject.Inject;
 
@@ -6,17 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import services.AuthorServices;
+import com.example.demo.services.AuthorService;
 
 @Controller
 public class AuthorController {
 	@Inject
-	private AuthorServices authorServices;
+	private AuthorService authorService;
 	
 	@RequestMapping("authors")
 	public String getAllAuthors(Model model) {
 		
-		model.addAttribute("authors", authorServices.getAllAuthors());
+		model.addAttribute("authors", authorService.getAllAuthors());
 		
 		return "author/index";
 	}

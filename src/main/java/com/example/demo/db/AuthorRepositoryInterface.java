@@ -1,4 +1,4 @@
-package db;
+package com.example.demo.db;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,38 +8,38 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import domain.Genre;
+import com.example.demo.domain.Author;
 
 @Repository
-public interface GenreRepositoryInterface extends CrudRepository<Genre, Long>  {
-
+public interface AuthorRepositoryInterface extends CrudRepository<Author, Long> {
+    
 	@Override
-	default Iterable<Genre> findAll() {
+	default Iterable<Author> findAll() {
 		
-		List<Genre> genres = new ArrayList<>();
+		List<Author> authors = new ArrayList<>();
 		
-		genres.add(new Genre("Революционное мясо"));
-		genres.add(new Genre("Для покурить"));
-		genres.add(new Genre("Революция Мексикана"));
-		genres.add(new Genre("Мясо по французки"));
+		authors.add(new Author("Николай Островский"));
+		authors.add(new Author("Антуан де Сент-Экзюпери"));
+		authors.add(new Author("Михаил Шолохов"));
+		authors.add(new Author("Лев Толстой"));
 		
-		return genres;
+		return authors;
 	}
 	
 //	@Override
-//	default <S extends Genre> S save(S entity) {
+//	default <S extends Author> S save(S entity) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
 //	@Override
-//	default <S extends Genre> Iterable<S> saveAll(Iterable<S> entities) {
+//	default <S extends Author> Iterable<S> saveAll(Iterable<S> entities) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
 //	@Override
-//	default Optional<Genre> findById(Long id) {
+//	default Optional<Author> findById(Long id) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
@@ -50,10 +50,8 @@ public interface GenreRepositoryInterface extends CrudRepository<Genre, Long>  {
 //		return false;
 //	}
 //
-//	
-//
 //	@Override
-//	default Iterable<Genre> findAllById(Iterable<Long> ids) {
+//	default Iterable<Author> findAllById(Iterable<Long> ids) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
@@ -71,13 +69,13 @@ public interface GenreRepositoryInterface extends CrudRepository<Genre, Long>  {
 //	}
 //
 //	@Override
-//	default void delete(Genre entity) {
+//	default void delete(Author entity) {
 //		// TODO Auto-generated method stub
 //		
 //	}
 //
 //	@Override
-//	default void deleteAll(Iterable<? extends Genre> entities) {
+//	default void deleteAll(Iterable<? extends Author> entities) {
 //		// TODO Auto-generated method stub
 //		
 //	}

@@ -1,4 +1,4 @@
-package db;
+package com.example.demo.db;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import domain.Author;
-import domain.Book;
-import domain.Genre;
+import com.example.demo.domain.Author;
+import com.example.demo.domain.Book;
+import com.example.demo.domain.Genre;
 
 @Repository
 public interface BookRepositoryInterface extends CrudRepository<Book, Long> {
