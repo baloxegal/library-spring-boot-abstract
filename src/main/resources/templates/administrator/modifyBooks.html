@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTjIkhuWBg4gh8SgyYXSUKYn23q2luzzfJ_JQ&usqp=CAU" type="image/x-icon">
 
-    <!--/*<link rel="stylesheet" href="style.css">
-	<style>@import url("style.css")</style>*/-->
-
     <title>Library in my own</title>
   </head>
   
@@ -33,24 +30,35 @@
 	    <li class="nav-item">
 	      <a class="nav-link" href="authors">Authors</a>
 	    </li>
-      </ul>
-	  
-	  <form class="form-inline ml-auto" action="">
-	    <input class="form-control mr-sm-2" size="70" type="text" placeholder="Search for books, authors or genres">
-	    <button class="btn btn-success" type="submit">Search</button>
-	  </form>
+	  </ul>
 	</nav>
 	<!--NAVBAR-->
 	
-	<!--BEST SELLERS-->
 	<div class="container text-center font-weight-bold">
-		<h2>ALL CLIENTS</h2>
-			<div class="row">
-			  <div class="col" th:each="client : ${clients}">
-			   	<p><a class="h5" href="authors" th:text="${client.fullName}">Client</a></p>
-			  	<button type="button" class="btn btn-primary btn-block">REACH BOY</button>
-			  </div>
-			</div>		
+		<h2>ADMIN FORM</h2>
+		<div class="row">
+			<div class="col">
+				<a class="h4" href="createBook">CREATE BOOK</a>			  	
+			</div>
+			<div class="col">
+				<a class="h4" href="updateBooks">UPDATE BOOK</a>			  	
+			</div>
+			<div class="col">
+				<a class="h4" href="getAllBooks">FIND ALL BOOKS</a>			  	
+			</div>
+			<div class="col">				
+			  	<a class="h4" href="getBookById">FIND BOOK BY ID</a>
+			</div>
+			<div class="col">				
+			  	<a class="h4" href="getBookByName">FIND BOOK BY NAME</a>
+			</div>
+			<div class="col">				
+			  	<a class="h4" href="deleteBookById">DELETE BOOK BY ID</a>
+			</div>
+			<div class="col">				
+			  	<a class="h4" href="deleteAllBooks">DELETE ALL BOOKS</a>
+			</div>
+		</div>		
 	</div>	
 			
     <!-- Optional JavaScript -->
