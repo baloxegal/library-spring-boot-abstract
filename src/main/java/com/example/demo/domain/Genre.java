@@ -38,22 +38,5 @@ public class Genre {
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "genres", cascade = CascadeType.REFRESH)
 	@ToString.Exclude
 	private List<Author> authors = new ArrayList<Author>();
-	
-	public void addBook(Book book) {
-		books.add(book);
-	}
-	
-	public void removeBook(Book book) {
-		books.remove(book);
-	}
-	
-	public void addAuthor(Author author) {
-		authors.add(author);
-		author.getGenres().add(this);
-	}
-	
-	public void removeAuthor(Author author) {
-		authors.remove(author);
-		author.getGenres().remove(this);
-	}
+
 }

@@ -44,18 +44,43 @@
 	
 	<!--BEST SELLERS-->
 	<div class="container text-center font-weight-bold">
-		<h2>CLIENT.HTML</h2>
+		<h2>START PAGE Best Sellers</h2>
 			<div class="row">
-			  <div class="col" th:each="client : ${clients}">
-			   	<p><a class="h5" href="authors" th:text="${client.fullName}">Client</a></p>
-			  	<button type="button" class="btn btn-primary btn-block">REACH BOY</button>
+			  <div class="col" th:each="book : ${books}">
+			  	<a href="books"><img th:src="${book.cover}" class="rounded mx-auto d-block" style="width:183px;height:275px"></a>
+			  	<a class="h4" href="books" th:text="${book.title}">Title</a>
+			  	<p><a class="h5" href="authors" th:text="${book.author.fullName}">Author</a></p>
+			  	<p class="h6"><span th:text="${book.year}">Year</span> год</p>
+			  	<p class="h6">жанр: <a class="h6" href="genres" th:text="${book.genre.name}">Genre</a></p>
+			  	<p>available</p>
+			  	<button type="button" class="btn btn-primary btn-block">Buy</button>
 			  </div>
 			</div>
 		<h2>Get Fresh Books </h2>
 			<div class="row">
-			  <div class="col" th:each="client : ${clients}">
-			   	<p><a class="h5" href="authors" th:text="${client.fullName}">Client</a></p>
-			  	<button type="button" class="btn btn-primary btn-block">REACH BOY</button>
+			  <div class="col" th:each="book : ${books}">
+			  	<a href="books"><img th:src="${book.cover}" class="rounded mx-auto d-block" style="width:183px;height:275px"></a>
+			  	<a class="h4" href="books" th:text="${book.title}">Title</a>
+			  	<p><a class="h5" href="authors" th:text="${book.author.fullName}">Author</a></p>
+			  	<p class="h6"><span th:text="${book.year}">Year</span> год</p>
+			  	<p class="h6">жанр: <a class="h6" href="genres" th:text="${book.genre.name}">Genre</a></p>
+			  	<p>available</p>
+			  	<button type="button" class="btn btn-success btn-block">GET</button>
+			  </div>
+			</div>
+		<h2>We Have</h2>
+			<div class="row">
+			  <div class="col">
+			  	<p>books</p>
+			  	<p>1000</p>
+			  </div>
+			  <div class="col">
+			  	<p>authors</p>
+			  	<p>100</p>
+			  </div>
+			  <div class="col">
+			  	<p>genres</p>
+			  	<p>100</p>
 			  </div>
 			</div>
 	</div>	

@@ -18,7 +18,7 @@ public class ClientController {
 			
 		model.addAttribute("clients", clientService.getAllClients());
 		
-		return "client/index";
+		return "client/allClients";
 	}
 
 }

@@ -33,14 +33,5 @@ public class Client {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@ToString.Exclude
 	private List<Book> books = new ArrayList<Book>();
-	
-	public void addBook(Book book) {
-		books.add(book);
-		book.getClients().add(this);
-	}
-	
-	public void removeBook(Book book) {
-		books.remove(book);
-		book.getClients().remove(this);
-	}
+
 }

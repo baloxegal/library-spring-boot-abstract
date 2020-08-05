@@ -39,22 +39,5 @@ public class Author {
 	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
 	@ToString.Exclude
 	private List<Genre> genres = new ArrayList<Genre>();
-	
-	public void addBook(Book book) {
-		books.add(book);
-	}
-	
-	public void removeBook(Book book) {
-		books.remove(book);
-	}
-	
-	public void addGenre(Genre genre) {
-		genres.add(genre);
-		genre.getAuthors().add(this);
-	}
-	
-	public void removeGenre(Genre genre) {
-		genres.remove(genre);
-		genre.getAuthors().remove(this);
-	}
+
 }

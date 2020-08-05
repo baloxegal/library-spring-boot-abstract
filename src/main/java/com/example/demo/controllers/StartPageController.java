@@ -5,52 +5,68 @@ package com.example.demo.controllers;
 //import java.io.FileReader;
 //import java.io.IOException;
 //import org.springframework.web.bind.annotation.ResponseBody;
+//import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.domain.Author;
-import com.example.demo.domain.Book;
-import com.example.demo.domain.Genre;
+//import java.util.ArrayList;
+//import java.util.List;
+
+//import com.example.demo.domain.Author;
+//import com.example.demo.domain.Book;
+//import com.example.demo.domain.Genre;
 
 import org.springframework.ui.Model;
+import javax.inject.Inject;
 
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.demo.services.BookService;
 
 @Controller
-public class IndexPageController {
+public class StartPageController {
+	
+	@Inject
+	private BookService bookService;
+	
+	@GetMapping("")
+	public String getAllBooksBlank(Model model) {
+				
+		model.addAttribute("books", bookService.getAllBooks());
+		
+		return "startPage/index";
+	}
 	
 	@GetMapping("index")
-	  public String getIndex(Model model) {
-		Author x = new Author("Николай Островский");
-		Author y = new Author("Антуан де Сент-Экзюпери");
-		Author n = new Author("Михаил Шолохов");
-		Author m = new Author("Лев Толстой");
-		
-		Genre f = new Genre("Революционное мясо");
-		Genre g = new Genre("Для покурить");
-		Genre h = new Genre("Революция Мексикана");
-		Genre p = new Genre("Мясо по французки");
+	public String getAllBooksIndex(Model model) {
 				
-		List<Book> books = new ArrayList<>();
+		model.addAttribute("books", bookService.getAllBooks());
 		
-		books.add(new Book("Как закалялась сталь", 1938, true, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQuocjZqbeTCT0l4VJGIZc_9VBtA9iOyp6HjA&usqp=CAU", f,  x));
-		books.add(new Book("Маленький принц", 1958, true, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQdS5OdROIedW7Yg6NifgBCOmV9bVWcdCUb6g&usqp=CAU", g, y));
-		books.add(new Book("Тихий дон", 1948, false, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgqbXzoa9GQAMuSwNcBUjI_RSq-HnwblwbyA&usqp=CAU\" class=",h, n));
-		books.add(new Book("Война и мир", 1888, true, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFBD1YM1DIN7KWPIUdcSY4s8SfOEJyclPNOw&usqp=CAU",p, m));
-		
-		model.addAttribute("books", books);
-		
-		return "index";
-	  }
+		return "startPage/index";
+	}
 	
-	@RequestMapping("templatesIndex")
-	  public String templatesIndexPage() {
-	  	return "index";
-	  }
+//	@GetMapping("index")
+//	  public String getIndex(Model model) {
+//		Author x = new Author("Николай Островский");
+//		Author y = new Author("Антуан де Сент-Экзюпери");
+//		Author n = new Author("Михаил Шолохов");
+//		Author m = new Author("Лев Толстой");
+//		
+//		Genre f = new Genre("Революционное мясо");
+//		Genre g = new Genre("Для покурить");
+//		Genre h = new Genre("Революция Мексикана");
+//		Genre p = new Genre("Мясо по французки");
+//				
+//		List<Book> books = new ArrayList<>();
+//		
+//		books.add(new Book("Как закалялась сталь", 1938, true, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQuocjZqbeTCT0l4VJGIZc_9VBtA9iOyp6HjA&usqp=CAU", f,  x));
+//		books.add(new Book("Маленький принц", 1958, true, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQdS5OdROIedW7Yg6NifgBCOmV9bVWcdCUb6g&usqp=CAU", g, y));
+//		books.add(new Book("Тихий дон", 1948, false, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgqbXzoa9GQAMuSwNcBUjI_RSq-HnwblwbyA&usqp=CAU\" class=",h, n));
+//		books.add(new Book("Война и мир", 1888, true, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFBD1YM1DIN7KWPIUdcSY4s8SfOEJyclPNOw&usqp=CAU",p, m));
+//		
+//		model.addAttribute("books", books);
+//		
+//		return "index";
+//	  }
 	
 //	@RequestMapping("/index")
 //	@ResponseBody

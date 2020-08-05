@@ -18,6 +18,6 @@ public class GenreController {
 		
 		model.addAttribute("genres", genreService.getAllGenres());
 		
-		return "genre/index";
+		return "genre/allGenres";
 	}
 }
