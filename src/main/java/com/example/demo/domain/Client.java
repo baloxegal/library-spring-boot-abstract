@@ -30,7 +30,7 @@ public class Client {
 	@NonNull
 	private String fullName;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "clients", cascade = CascadeType.REFRESH)
 	@ToString.Exclude
 	private List<Book> books = new ArrayList<Book>();
 

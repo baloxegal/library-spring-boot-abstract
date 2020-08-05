@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.services.BookService;
@@ -20,5 +21,16 @@ public class BookController {
 		
 		return "book/allBooks";
 	}
+	
+	@GetMapping("modifyBooks")
+	public String modifyBooks() {
+		
+		return "book/modifyBooks";
+	}
 
+	@GetMapping("createBook")
+	public String createBook() {
+		
+		return "book/createBook";
+	}
 }

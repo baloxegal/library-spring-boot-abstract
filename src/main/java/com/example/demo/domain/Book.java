@@ -47,7 +47,7 @@ public class Book {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private Author author;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "books", cascade = CascadeType.REFRESH)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@ToString.Exclude
 	private List<Client> clients = new ArrayList<Client>();
 

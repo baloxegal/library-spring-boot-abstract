@@ -11,10 +11,5 @@ public class AdminController {
 		
 		return "administrator/adminForm";
 	}
-	
-	@GetMapping("modifyBooks")
-	public String modifyBooks() {
-		
-		return "administrator/modifyBooks";
-	}
+
 }

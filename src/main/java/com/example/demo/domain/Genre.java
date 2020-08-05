@@ -31,7 +31,7 @@ public class Genre {
 	@NonNull
 	private String name;
 			
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "genre", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
 	@ToString.Exclude
 	private List<Book> books = new ArrayList<Book>();
 	

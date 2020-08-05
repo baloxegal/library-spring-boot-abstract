@@ -31,12 +31,12 @@ public class Author {
 	@NonNull
 	private String fullName;
 		
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "author", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
 	@ToString.Exclude
 	//TODO Lombok smojet podobrati pravilinii toString() dlea List?
 	private List<Book> books = new ArrayList<Book>();
 	
-	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@ToString.Exclude
 	private List<Genre> genres = new ArrayList<Genre>();
 
