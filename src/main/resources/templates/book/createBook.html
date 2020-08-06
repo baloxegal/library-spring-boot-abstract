@@ -35,30 +35,52 @@
 	<!--NAVBAR-->
 	
 	<div class="container text-center font-weight-bold">
-		<h2>MODIFY BOOKS</h2>
-		<div class="row">
-			<div class="col">
-				<a class="h4" href="createBook">CREATE BOOK</a>			  	
-			</div>
-			<div class="col">
-				<a class="h4" href="updateBooks">UPDATE BOOK</a>			  	
-			</div>
-			<div class="col">
-				<a class="h4" href="getAllBooks">FIND ALL BOOKS</a>			  	
-			</div>
-			<div class="col">				
-			  	<a class="h4" href="getBookById">FIND BOOK BY ID</a>
-			</div>
-			<div class="col">				
-			  	<a class="h4" href="getBookByName">FIND BOOK BY NAME</a>
-			</div>
-			<div class="col">				
-			  	<a class="h4" href="deleteBookById">DELETE BOOK BY ID</a>
-			</div>
-			<div class="col">				
-			  	<a class="h4" href="deleteAllBooks">DELETE ALL BOOKS</a>
-			</div>
-		</div>		
+		<h2>CREATE BOOK</h2>
+			<form action="save">
+				<div class="form-group col-md-4 col-form">
+					<div>
+						<label for="inputTitle">Title</label>
+						<input type="text" name="title" class="form-control" placeholder="Insert title of the book"/>
+					</div>
+					<p></p>
+					<div>
+						<label for="inputYear">Year</label>
+						<input type="text" name="year" class="form-control" placeholder="Insert year of the book"/>
+					</div>
+					<p></p>
+					<div>
+						<label for="inputAvailable">If available</label>
+						<input type="text" name="ifAvailable" class="form-control" placeholder="Insert true or false if available the book"/>
+					</div>
+					<p></p>
+					<div>
+						<label for="inputURLCover">Cover</label>
+						<input type="text" name="cover" class="form-control" placeholder="Insert url of cover for the book"/>
+					</div>
+					<p></p>
+					<div>
+						<label for="inputGenre">Genre</label>
+						<input type="text" name="genre" class="form-control" placeholder="Insert genre name of the book"/>
+					</div>
+					<p></p>
+					<select id="inputGenre" class="form-control">
+				        <option selected>Choose Genre</option>
+				        <option>...</option>
+				    </select>
+				    <p></p>
+				    <div>
+						<label for="inputAuthor">Author</label>
+						<input type="text" name="author" class="form-control" placeholder="Insert author fullname of the book"/>
+					</div>
+					<p></p>
+					<select id="inputAuthor" class="form-control">
+				        <option selected>Choose Author</option>
+				        <option>...</option>
+				    </select>
+					<p></p>
+					<button type="submit" class="btn btn-primary">Save</button>
+				</div>
+			</form>
 	</div>	
 			
     <!-- Optional JavaScript -->

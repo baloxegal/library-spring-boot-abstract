@@ -27,5 +27,10 @@ public class BookService {
 //		return bookRepository.findAll(authorRepository.findAll(), genreRepository.findAll());
 		return bookRepository.findAll();
 	}
-
+	
+	public void save(Book book){
+		
+		bookRepository.save(book);
+	}
+	
 }

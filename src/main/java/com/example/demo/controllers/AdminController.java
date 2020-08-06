@@ -11,5 +11,17 @@ public class AdminController {
 		
 		return "administrator/adminForm";
 	}
+	
+	@GetMapping("successForm")
+	public String getSuccessForm() {
+		
+		return "administrator/successForm";
+	}
+	
+	@GetMapping("unSuccessForm")
+	public String getUnSuccessForm() {
+		
+		return "administrator/unSuccessForm";
+	}
 
 }
