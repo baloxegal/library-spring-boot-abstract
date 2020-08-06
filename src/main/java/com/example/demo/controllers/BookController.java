@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,23 +25,25 @@ public class BookController {
 		return "book/allBooks";
 	}
 	
-	@GetMapping("modifyBooks")
+	@RequestMapping("modifyBooks")
 	public String modifyBooks() {
 		
 		return "book/modifyBooks";
 	}
 
-	@GetMapping("createBook")
+	@RequestMapping("createBook")
 	public String createBook() {
 		
 		return "book/createBook";
 	}
 	
-	@GetMapping("save")
+	@RequestMapping("save")
 	public String saveBook(@RequestParam String title, int year, boolean available, String cover, String name, String fullName) {
-		bookService.getAllBooks().iterator().forEachRemaining(b -> {if((b.getTitle().equals(title)) && (b.getAuthor().getFullName().equals(fullName)))
-																	{new AdminController().getUnSuccessForm(); return;}
-																	else {bookService.save(new Book(title, year, true, cover, new Genre(name), new Author(fullName)));}});
+//		bookService.getAllBooks().iterator().forEachRemaining(b -> {if((b.getTitle().equals(title)) && (b.getAuthor().getFullName().equals(fullName)))
+//																	{new AdminController().getUnSuccessForm(); return;}
+//																	else {bookService.save(new Book(title, year, true, cover, new Genre(name), new Author(fullName)));}});
+
+		bookService.save(new Book(title, year, true, cover, new Genre(name), new Author(fullName)));
 		
 		return "administrator/successForm";
 	}

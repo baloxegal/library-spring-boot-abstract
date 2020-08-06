@@ -32,9 +32,9 @@ public class Book {
 	private String title;
 	//TODO warning na @NonNull dlea primitiviov?
 	@NonNull
-	private int year;
+	private Integer year;
 	@NonNull
-	private boolean avaliable;
+	private Boolean avaliable;
 	
 	@NonNull
 	private String cover;

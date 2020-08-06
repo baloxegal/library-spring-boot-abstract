@@ -38,7 +38,7 @@ public class Author {
 	//TODO Lombok smojet podobrati pravilinii toString() dlea List?
 	private List<Book> books = new ArrayList<Book>();
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "authors", cascade = CascadeType.REFRESH)
 	@ToString.Exclude
 	private List<Genre> genres = new ArrayList<Genre>();
 

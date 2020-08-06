@@ -1,24 +1,24 @@
 package com.example.demo.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AdminController {
 	
-	@GetMapping("adminForm")
+	@RequestMapping("adminForm")
 	public String getAdminForm() {
 		
 		return "administrator/adminForm";
 	}
 	
-	@GetMapping("successForm")
+	@RequestMapping("successForm")
 	public String getSuccessForm() {
 		
 		return "administrator/successForm";
 	}
 	
-	@GetMapping("unSuccessForm")
+	@RequestMapping("unSuccessForm")
 	public String getUnSuccessForm() {
 		
 		return "administrator/unSuccessForm";
