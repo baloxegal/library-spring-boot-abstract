@@ -16,9 +16,14 @@ public class ClientService {
 	@Inject	
 	private ClientRepositoryInterface clientRepository;
 	
-	public Iterable<Client> getAllClients(){
+	public Iterable<Client> findAll(){
 		
 		return clientRepository.findAll(); 
+	}
+	
+	public void save(Client client){
+		
+		clientRepository.save(client);
 	}
 
 }

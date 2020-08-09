@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTjIkhuWBg4gh8SgyYXSUKYn23q2luzzfJ_JQ&usqp=CAU" type="image/x-icon">
 
+    <!--/*<link rel="stylesheet" href="style.css">
+	<style>@import url("style.css")</style>*/-->
+
     <title>Library in my own</title>
   </head>
   
@@ -30,26 +33,56 @@
 	    <li class="nav-item">
 	      <a class="nav-link" href="/authors">Authors</a>
 	    </li>
-	  </ul>
+      </ul>
+	  
+	  <form class="form-inline ml-auto" action="">
+	    <input class="form-control mr-sm-2" size="70" type="text" placeholder="Search for books, authors or genres">
+	    <button class="btn btn-success" type="submit">Search</button>
+	  </form>
 	</nav>
 	<!--NAVBAR-->
 	
+	<!--BEST SELLERS-->
 	<div class="container text-center font-weight-bold">
-		<h2>ADMIN FORM</h2>
-		<div class="row">
-			<div class="col">
-				<a class="h4" href="/adminForm/modifyBooks">MODIFY BOOKS</a>			  	
+		<h2>ALL BOOKS Best Sellers</h2>
+			<div class="row">
+			  <div class="col" th:each="book : ${books}">
+			  	<a href="books"><img th:src="${book.cover}" class="rounded mx-auto d-block" style="width:183px;height:275px"></a>
+			  	<a class="h4" href="books" th:text="${book.title}">Title</a>
+			  	<p><a class="h5" href="authors" th:text="${book.author.fullName}">Author</a></p>
+			  	<p class="h6"><span th:text="${book.year}">Year</span> год</p>
+			  	<p class="h6">жанр: <a class="h6" href="genres" th:text="${book.genre.name}">Genre</a></p>
+			  	<p>available</p>
+			  	<button type="button" class="btn btn-primary btn-block">Buy</button>
+			  </div>
 			</div>
-			<div class="col">
-				<a class="h4" href="/adminForm/modifyGenres">MODIFY GENRES</a>			  	
+		<h2>Get Fresh Books </h2>
+			<div class="row">
+			  <div class="col" th:each="book : ${books}">
+			  	<a href="books"><img th:src="${book.cover}" class="rounded mx-auto d-block" style="width:183px;height:275px"></a>
+			  	<a class="h4" href="books" th:text="${book.title}">Title</a>
+			  	<p><a class="h5" href="authors" th:text="${book.author.fullName}">Author</a></p>
+			  	<p class="h6"><span th:text="${book.year}">Year</span> год</p>
+			  	<p class="h6">жанр: <a class="h6" href="genres" th:text="${book.genre.name}">Genre</a></p>
+			  	<p>available</p>
+			  	<button type="button" class="btn btn-success btn-block">GET</button>
+			  </div>
 			</div>
-			<div class="col">
-				<a class="h4" href="/adminForm/modifyAuthors">MODIFY AUTHORS</a>			  	
+		<h2>We Have</h2>
+			<div class="row">
+			  <div class="col">
+			  	<p>books</p>
+			  	<p>1000</p>
+			  </div>
+			  <div class="col">
+			  	<p>authors</p>
+			  	<p>100</p>
+			  </div>
+			  <div class="col">
+			  	<p>genres</p>
+			  	<p>100</p>
+			  </div>
 			</div>
-			<div class="col">				
-			  	<a class="h4" href="/adminForm/modifyClients">MODIFY CLIENTS</a>
-			</div>
-		</div>		
 	</div>	
 			
     <!-- Optional JavaScript -->

@@ -16,19 +16,19 @@
     <!--NAVBAR-->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  <!-- Brand -->
-	  <a class="navbar-brand" href="index">Library Store</a>
+	  <a class="navbar-brand" href="/index">Library Store</a>
 	  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRM3514giTTn2CJ2ctp7QxY_yF66bEPAbmvaDribtCkbg&usqp=CAU&ec=45682160">
 	
 	  <!-- Links -->
 	  <ul class="navbar-nav">
 	    <li class="nav-item">
-	      <a class="nav-link" href="books">Books</a>
+	      <a class="nav-link" href="/books">Books</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="genres">Genres</a>
+	      <a class="nav-link" href="/genres">Genres</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="authors">Authors</a>
+	      <a class="nav-link" href="/authors">Authors</a>
 	    </li>
 	  </ul>
 	</nav>
@@ -36,7 +36,7 @@
 	
 	<div class="container text-center font-weight-bold">
 		<h2>CREATE BOOK</h2>
-			<form action="save">
+			<form action="/adminForm/modifyBooks/createBook/saveBook">
 				<div class="form-group col-md-4 col-form">
 					<div>
 						<label for="inputTitle">Title</label>
@@ -45,12 +45,16 @@
 					<p></p>
 					<div>
 						<label for="inputYear">Year</label>
-						<input type="text" name="year" class="form-control" placeholder="Insert year of the book"/>
-					</div>
+						<select class="form-control"name="year">
+				       		<option selected>Choose Year</option>
+				       		<option th:each="year : ${years}" th:value="${year}" th:text="${year}"></option>
+				        	<!-- <option th:each="i : ${#numbers.sequence(1900, 2020)}" th:value="${i}" th:text="${i}"></option> -->
+				        </select>
+				    </div>
 					<p></p>
 					<div>
-						<label for="inputAvailable">If available</label>
-						<input type="text" name="ifAvailable" class="form-control" placeholder="Insert true or false if available the book"/>
+						<label for="inputAvailable">Is available</label>
+						<input type="checkbox" name="isAvailable" class="form-control" placeholder="Insert true or false if available the book"/>
 					</div>
 					<p></p>
 					<div>
@@ -60,24 +64,22 @@
 					<p></p>
 					<div>
 						<label for="inputGenre">Genre</label>
-						<input type="text" name="name" class="form-control" placeholder="Insert genre name of the book"/>
+						<select class="form-control" name="name">
+				       		<option selected>Choose Genre</option>
+				       		<option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
+				        </select>
+						<!-- <input type="text" name="name" class="form-control" placeholder="Insert genre name of the book"/> -->
 					</div>
 					<p></p>
-					<!-- <select id="inputGenre" class="form-control">
-				        <option selected>Choose Genre</option>
-				        <option>...</option>
-				    </select>
-				    <p></p> -->
-				    <div>
+					<div>
 						<label for="inputAuthor">Author</label>
-						<input type="text" name="fullName" class="form-control" placeholder="Insert author fullname of the book"/>
+						<select class="form-control" name="fullName">
+				       		<option selected>Choose Author</option>
+				       		<option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.fullName}"></option>
+				        </select>
+						<!-- <input type="text" name="fullName" class="form-control" placeholder="Insert author fullname of the book"/> -->
 					</div>
 					<p></p>
-					<!-- <select id="inputAuthor" class="form-control">
-				        <option selected>Choose Author</option>
-				        <option>...</option>
-				    </select>
-					<p></p> -->
 					<button type="submit" class="btn btn-primary">Save</button>
 				</div>
 			</form>

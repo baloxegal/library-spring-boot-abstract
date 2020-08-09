@@ -29,19 +29,19 @@ public class StartPageController {
 	private BookService bookService;
 	
 	@RequestMapping("")
-	public String getAllBooksBlank(Model model) {
+	public String getAllBooksStart(Model model) {
 				
-		model.addAttribute("books", bookService.getAllBooks());
+		model.addAttribute("books", bookService.findAll());
 		
-		return "startPage/index";
+		return "/startPage/index";
 	}
 	
-	@RequestMapping("index")
+	@RequestMapping("/index")
 	public String getAllBooksIndex(Model model) {
 				
-		model.addAttribute("books", bookService.getAllBooks());
+		model.addAttribute("books", bookService.findAll());
 		
-		return "startPage/index";
+		return "/startPage/index";
 	}
 	
 //	@GetMapping("index")

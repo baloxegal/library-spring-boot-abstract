@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -16,9 +18,19 @@ public class AuthorService {
 	@Inject
 	private AuthorRepositoryInterface authorRepository;
 	
-	public Iterable<Author> getAllAuthors(){
+	public Iterable<Author> findAll(){
 		
 		return authorRepository.findAll();
+	}
+	
+	public void save(Author author){
+		
+		authorRepository.save(author);
+	}
+	
+	public Optional<Author> findById(Long authorId){
+		
+		return authorRepository.findById(authorId);
 	}
 
 }

@@ -6,22 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AdminController {
 	
-	@RequestMapping("adminForm")
+	@RequestMapping("/adminForm")
 	public String getAdminForm() {
 		
-		return "administrator/adminForm";
+		return "/administrator/adminForm";
 	}
 	
-	@RequestMapping("successForm")
+	@RequestMapping("/adminForm/successForm")
 	public String getSuccessForm() {
 		
-		return "administrator/successForm";
+		return "/administrator/successForm";
 	}
 	
-	@RequestMapping("unSuccessForm")
+	@RequestMapping("/adminForm/unSuccessForm")
 	public String getUnSuccessForm() {
 		
-		return "administrator/unSuccessForm";
+		return "/administrator/unSuccessForm";
 	}
-
 }

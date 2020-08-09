@@ -22,7 +22,7 @@ public class BookService {
 	@Inject
 	private BookRepositoryInterface bookRepository;
 	
-	public Iterable<Book> getAllBooks(){
+	public Iterable<Book> findAll(){
 		
 //		return bookRepository.findAll(authorRepository.findAll(), genreRepository.findAll());
 		return bookRepository.findAll();

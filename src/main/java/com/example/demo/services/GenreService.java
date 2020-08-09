@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -16,9 +18,19 @@ public class GenreService {
 	@Inject
 	private GenreRepositoryInterface genreRepository;
 	
-	public Iterable<Genre> getAllGenres(){
+	public Iterable<Genre> findAll(){
 	
 		return genreRepository.findAll();
+	}
+	
+	public void save(Genre genre){
+		
+		genreRepository.save(genre);
+	}
+	
+	public Optional<Genre> findById(Long genreId){
+		
+		return genreRepository.findById(genreId);
 	}
 
 }

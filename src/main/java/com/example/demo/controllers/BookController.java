@@ -7,44 +7,76 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.demo.domain.Author;
 import com.example.demo.domain.Book;
 import com.example.demo.domain.Genre;
+import com.example.demo.services.AuthorService;
 import com.example.demo.services.BookService;
+import com.example.demo.services.GenreService;
 
 @Controller
 public class BookController {	
 	@Inject
 	private BookService bookService;
+	@Inject
+	private AuthorService authorService;
+	@Inject
+	private GenreService genreService;
 	
-	@RequestMapping("books")
-	public String getAllBooks(Model model) {
+	@RequestMapping("/books")
+	public String findAll(Model model) {
 				
-		model.addAttribute("books", bookService.getAllBooks());
+		model.addAttribute("books", bookService.findAll());
 		
-		return "book/allBooks";
+		return "/book/findAllBooks";
 	}
 	
-	@RequestMapping("modifyBooks")
+	@RequestMapping("/adminForm/modifyBooks")
 	public String modifyBooks() {
 		
-		return "book/modifyBooks";
+		return "/book/modifyBooks";
 	}
 
-	@RequestMapping("createBook")
-	public String createBook() {
+	@RequestMapping("/adminForm/modifyBooks/createBook")
+	public String createBook(Model model) {
 		
-		return "book/createBook";
+		List <Integer> years = new ArrayList<>();
+		for(int i = 1900; i <= LocalDate.now().getYear(); i++) {
+			years.add(i);
+		}
+		
+		model.addAttribute("years", years);
+		model.addAttribute("authors", authorService.findAll());
+		model.addAttribute("genres", genreService.findAll());
+		
+		return "/book/createBook";
 	}
 	
-	@RequestMapping("save")
-	public String saveBook(@RequestParam String title, int year, boolean available, String cover, String name, String fullName) {
-//		bookService.getAllBooks().iterator().forEachRemaining(b -> {if((b.getTitle().equals(title)) && (b.getAuthor().getFullName().equals(fullName)))
-//																	{new AdminController().getUnSuccessForm(); return;}
-//																	else {bookService.save(new Book(title, year, true, cover, new Genre(name), new Author(fullName)));}});
-
-		bookService.save(new Book(title, year, true, cover, new Genre(name), new Author(fullName)));
+	@RequestMapping("/adminForm/modifyBooks/createBook/saveBook")
+	public String save(@RequestParam String title, int year, boolean isAvailable, String cover, String name, String fullName) {
 		
-		return "administrator/successForm";
+		Genre genre = null;
+		
+		while((genre = genreService.findAll().iterator().next()) != null) {
+			if(genre.getName().equals(name)) {
+				break;
+			}
+		}
+		
+		Author author = null;
+		
+		while((author = authorService.findAll().iterator().next()) != null) {
+			if(author.getFullName().equals(fullName)) {
+				break;
+			}
+		}
+		
+		bookService.save(new Book(title, year, isAvailable, cover, genre, author));
+				
+		return "/administrator/successForm";
 	}
 }
