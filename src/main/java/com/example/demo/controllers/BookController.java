@@ -57,24 +57,11 @@ public class BookController {
 	}
 	
 	@RequestMapping("/adminForm/modifyBooks/createBook/saveBook")
-	public String save(@RequestParam String title, int year, boolean isAvailable, String cover, String name, String fullName) {
+	public String save(@RequestParam String title, int year, boolean isAvailable, String cover, Long genre_id, Long author_id) {
 		
-		Genre genre = null;
-		
-		while((genre = genreService.findAll().iterator().next()) != null) {
-			if(genre.getName().equals(name)) {
-				break;
-			}
-		}
-		
-		Author author = null;
-		
-		while((author = authorService.findAll().iterator().next()) != null) {
-			if(author.getFullName().equals(fullName)) {
-				break;
-			}
-		}
-		
+		Genre genre = genreService.findById(genre_id).get();
+		Author author = authorService.findById(author_id).get();
+					
 		bookService.save(new Book(title, year, isAvailable, cover, genre, author));
 				
 		return "/administrator/successForm";

@@ -64,7 +64,7 @@
 					<p></p>
 					<div>
 						<label for="inputGenre">Genre</label>
-						<select class="form-control" name="name">
+						<select class="form-control" name="genre_id">
 				       		<option selected>Choose Genre</option>
 				       		<option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
 				        </select>
@@ -73,7 +73,7 @@
 					<p></p>
 					<div>
 						<label for="inputAuthor">Author</label>
-						<select class="form-control" name="fullName">
+						<select class="form-control" name="author_id">
 				       		<option selected>Choose Author</option>
 				       		<option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.fullName}"></option>
 				        </select>
