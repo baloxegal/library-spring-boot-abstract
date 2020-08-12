@@ -4,7 +4,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.Author;
@@ -15,7 +16,7 @@ public class AuthorController {
 	@Inject
 	private AuthorService authorService;
 	
-	@RequestMapping("/authors")
+	@GetMapping("/authors")
 	public String findAll(Model model) {
 		
 		model.addAttribute("authors", authorService.findAll());
@@ -23,21 +24,25 @@ public class AuthorController {
 		return "/author/findAllAuthors";
 	}
 	
-	@RequestMapping("/adminForm/modifyAuthors")
+	@GetMapping("/adminForm/modifyAuthors")
 	public String modifyBooks() {
 		
 		return "/author/modifyAuthors";
 	}
 
-	@RequestMapping("/adminForm/modifyAuthors/createAuthor")
+	@GetMapping("/adminForm/modifyAuthors/createAuthor")
 	public String createBook(Model model) {
 				
 		return "/author/createAuthor";
 	}
 	
-	@RequestMapping("/adminForm/modifyAuthors/createAuthor/saveAuthor")
+	@PostMapping("/adminForm/modifyAuthors/createAuthor")
 	public String save(@RequestParam String fullName) {
 
+		if(fullName.isBlank() || fullName.isEmpty() || fullName == null) {
+			return "/administrator/unSuccessForm";
+		}
+		
 		authorService.save(new Author(fullName));
 		
 		return "/administrator/successForm";

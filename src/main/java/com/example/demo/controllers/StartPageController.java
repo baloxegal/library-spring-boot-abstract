@@ -8,7 +8,7 @@ package com.example.demo.controllers;
 //import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 //import java.util.ArrayList;
 //import java.util.List;
@@ -28,7 +28,7 @@ public class StartPageController {
 	@Inject
 	private BookService bookService;
 	
-	@RequestMapping("")
+	@GetMapping("")
 	public String getAllBooksStart(Model model) {
 				
 		model.addAttribute("books", bookService.findAll());
@@ -36,7 +36,7 @@ public class StartPageController {
 		return "/startPage/index";
 	}
 	
-	@RequestMapping("/index")
+	@GetMapping("/index")
 	public String getAllBooksIndex(Model model) {
 				
 		model.addAttribute("books", bookService.findAll());

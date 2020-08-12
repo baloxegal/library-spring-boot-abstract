@@ -36,7 +36,7 @@
 	
 	<div class="container text-center font-weight-bold">
 		<h2>CREATE BOOK</h2>
-			<form action="/adminForm/modifyBooks/createBook/saveBook">
+			<form action="/adminForm/modifyBooks/createBook" method="POST">
 				<div class="form-group col-md-4 col-form">
 					<div>
 						<label for="inputTitle">Title</label>
@@ -46,7 +46,7 @@
 					<div>
 						<label for="inputYear">Year</label>
 						<select class="form-control"name="year">
-				       		<option selected>Choose Year</option>
+				       		<option disabled selected>Choose Year</option>
 				       		<option th:each="year : ${years}" th:value="${year}" th:text="${year}"></option>
 				        	<!-- <option th:each="i : ${#numbers.sequence(1900, 2020)}" th:value="${i}" th:text="${i}"></option> -->
 				        </select>
@@ -65,7 +65,7 @@
 					<div>
 						<label for="inputGenre">Genre</label>
 						<select class="form-control" name="genre_id">
-				       		<option selected>Choose Genre</option>
+				       		<option disabled selected>Choose Genre</option>
 				       		<option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
 				        </select>
 						<!-- <input type="text" name="name" class="form-control" placeholder="Insert genre name of the book"/> -->
@@ -74,7 +74,7 @@
 					<div>
 						<label for="inputAuthor">Author</label>
 						<select class="form-control" name="author_id">
-				       		<option selected>Choose Author</option>
+				       		<option disabled selected>Choose Author</option>
 				       		<option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.fullName}"></option>
 				        </select>
 						<!-- <input type="text" name="fullName" class="form-control" placeholder="Insert author fullname of the book"/> -->

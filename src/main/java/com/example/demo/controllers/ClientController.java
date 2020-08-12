@@ -4,7 +4,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.Client;
@@ -15,7 +16,7 @@ public class ClientController {
 	@Inject
 	private ClientService clientService;
 	
-	@RequestMapping("/clients")
+	@GetMapping("/clients")
 	public String findAll(Model model) {
 			
 		model.addAttribute("clients", clientService.findAll());
@@ -23,21 +24,25 @@ public class ClientController {
 		return "/client/findAllClients";
 	}
 	
-	@RequestMapping("/adminForm/modifyClients")
+	@GetMapping("/adminForm/modifyClients")
 	public String modifyBooks() {
 		
 		return "/client/modifyClients";
 	}
 
-	@RequestMapping("/adminForm/modifyClients/createClient")
+	@GetMapping("/adminForm/modifyClients/createClient")
 	public String createBook(Model model) {
 				
 		return "/client/createClient";
 	}
 	
-	@RequestMapping("/adminForm/modifyClients/createClient/saveClient")
+	@PostMapping("/adminForm/modifyClients/createClient")
 	public String save(@RequestParam String fullName) {
 
+		if(fullName.isBlank() || fullName.isEmpty() || fullName == null) {
+			return "/administrator/unSuccessForm";
+		}
+		
 		clientService.save(new Client(fullName));
 		
 		return "/administrator/successForm";
