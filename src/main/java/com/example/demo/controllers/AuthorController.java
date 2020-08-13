@@ -25,13 +25,13 @@ public class AuthorController {
 	}
 	
 	@GetMapping("/adminForm/modifyAuthors")
-	public String modifyBooks() {
+	public String modifyAuthors() {
 		
 		return "/author/modifyAuthors";
 	}
 
 	@GetMapping("/adminForm/modifyAuthors/createAuthor")
-	public String createBook(Model model) {
+	public String createAuthor(Model model) {
 				
 		return "/author/createAuthor";
 	}

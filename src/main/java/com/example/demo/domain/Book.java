@@ -49,6 +49,6 @@ public class Book {
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@ToString.Exclude
-	private List<Client> clients = new ArrayList<Client>();
+	private List<User> users = new ArrayList<User>();
 
 }

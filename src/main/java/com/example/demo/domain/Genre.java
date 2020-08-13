@@ -30,7 +30,7 @@ public class Genre {
 	private Long id;
 	
 	@NonNull
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
 	private String name;
 			
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "genre", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})

@@ -25,13 +25,13 @@ public class GenreController {
 	}
 	
 	@GetMapping("/adminForm/modifyGenres")
-	public String modifyBooks() {
+	public String modifyGenres() {
 		
 		return "/genre/modifyGenres";
 	}
 
 	@GetMapping("/adminForm/modifyGenres/createGenre")
-	public String createBook(Model model) {
+	public String createGenre(Model model) {
 				
 		return "/genre/createGenre";
 	}

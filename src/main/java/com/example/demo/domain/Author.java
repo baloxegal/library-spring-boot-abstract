@@ -30,7 +30,7 @@ public class Author {
 	private Long id;
 	
 	@NonNull
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
 	private String fullName;
 		
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "author", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
