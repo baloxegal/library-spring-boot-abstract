@@ -3,6 +3,7 @@ package com.example.demo.services;
 import java.util.Optional;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,9 @@ public class UserService {
 	
 	@Inject	
 	private UserRepositoryInterface userRepository;
+	
+	@Inject
+	private HttpSession session;
 	
 	public Iterable<User> findAll(){
 		
@@ -35,9 +39,26 @@ public class UserService {
 	
 	public User findByName(String email, String password) {
 				
-		userRepository.findByName(email, password);
+		User user = userRepository.findByName(email, password);
 		
-		return null;
+		return user;
+	}
+	
+	public User loggedInUser() {
+		
+		return (User) session.getAttribute("user");		
+	}
+	
+	public User login(String email, String password) {
+		
+		User user = loggedInUser();
+		if(user != null)
+			return user;
+		
+		user = userRepository.findByName(email, password);
+		if(user != null)
+			session.setAttribute("user", user);
+		return user;		
 	}
 
 }

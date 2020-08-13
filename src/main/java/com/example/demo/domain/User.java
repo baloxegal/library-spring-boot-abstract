@@ -23,7 +23,7 @@ import lombok.ToString;
 @NoArgsConstructor @RequiredArgsConstructor @Getter @Setter @ToString
 
 @Entity
-@Table(name = "users_")
+@Table(name = "users")
 public class User {
 	
 	@Id
@@ -41,7 +41,7 @@ public class User {
 	
 	private String role;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "users_", cascade = CascadeType.REFRESH)
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.REFRESH)
 	@ToString.Exclude
 	private List<Book> books = new ArrayList<Book>();
 

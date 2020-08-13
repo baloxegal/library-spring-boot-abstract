@@ -13,8 +13,8 @@ public interface UserRepositoryInterface extends CrudRepository<User, Long>  {
 //		clients.add(new User("Василе Конилэ"));
 //		clients.add(new User("Петру Маранделу"));
 //		clients.add(new User("Миричика Курунсус"));
-
-	@Query("select u from users_ u where u.login = ?1 and u.password = ?2")
+	
+	@Query("select u from User u where u.email = ?1 and u.password = ?2")
 	public User findByName(String email, String password);
 	
 }
