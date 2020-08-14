@@ -30,20 +30,30 @@ public class UserController {
 		return "/user/modifyUsers";
 	}
 
-	@GetMapping("/adminForm/modifyUsers/createUser")
-	public String createUser(Model model) {
+	@GetMapping("/createUser")
+	public String createUser() {
 				
 		return "/user/createUser";
 	}
 	
-	@PostMapping("/adminForm/modifyUsers/createUser")
-	public String save(@RequestParam String email, String password) {
+	@PostMapping("/createUser")
+	public String save(@RequestParam String email, String password, String fullName) {
 
-		if(email.isBlank() || email.isEmpty() || email == null || password.isBlank() || password.isEmpty() || password == null) {
+		if(email.isBlank() || email.isEmpty() || email == null || password.isBlank() || password.isEmpty() || password == null || email == userService.findByName(email).getEmail()) {
 			return "/administrator/unSuccessForm";
 		}
+				
+		User user = new User(email, password);
 		
-		userService.save(new User(email, password));
+		userService.save(user);
+				
+		if(userService.count() == 1) {
+			userService.setRoleAdmin("admin", user.getEmail());
+		}
+		
+		if(fullName != null) {
+			userService.findByName(email).setFullName(fullName);
+		}
 		
 		return "/administrator/successForm";
 	}

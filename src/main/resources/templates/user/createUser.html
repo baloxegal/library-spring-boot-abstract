@@ -16,7 +16,7 @@
     <!--NAVBAR-->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  <!-- Brand -->
-	  <a class="navbar-brand" href="/index">Library Store</a>
+	  <a class="navbar-brand" href="/index">Library Store - Home</a>
 	  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRM3514giTTn2CJ2ctp7QxY_yF66bEPAbmvaDribtCkbg&usqp=CAU&ec=45682160">
 	
 	  <!-- Links -->
@@ -36,17 +36,16 @@
 	
 	<div class="container text-center font-weight-bold">
 		<h2>CREATE USER</h2>
-			<form action="/adminForm/modifyUsers/createUser" method="POST">
-				<div class="form-group col-md-4 col-form">
-					<div>
-						<label for="inputEmail">USER'S E-MAIL</label>
-						<input type="email" name="email" class="form-control" placeholder="Insert user's e-mail"/>
-						<label for="inputPassword">USER'S PASSWORD</label>
-						<input type="password" name="password" class="form-control" placeholder="Insert user's password"/>
-					</div>
-					<p></p>
-					<button type="submit" class="btn btn-primary">Save</button>
-				</div>
+		<form action="/createUser" method="POST">
+			<div class="form-group col-md-4 col-form">
+				<label for="inputEmail">USER'S E-MAIL</label>
+				<input type="email" name="email" class="form-control" placeholder="Insert user's e-mail"/>
+				<label for="inputPassword">USER'S PASSWORD</label>
+				<input type="password" name="password" class="form-control" placeholder="Insert user's password"/>
+				<label for="inputFullname">USER'S FULLNAME (not necessary)</label>
+				<input type="text" name="fullName" class="form-control" placeholder="Insert user's full name"/>
+				<p></p>
+				<button type="submit" class="btn btn-primary">Save</button>
 			</form>
 	</div>	
 			

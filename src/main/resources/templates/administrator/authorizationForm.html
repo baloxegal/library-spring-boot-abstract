@@ -19,7 +19,7 @@
     <!--NAVBAR-->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  <!-- Brand -->
-	  <a class="navbar-brand" href="/index">Library Store - Home</a>
+	  <a class="navbar-brand" href="/index">Library Store</a>
 	  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRM3514giTTn2CJ2ctp7QxY_yF66bEPAbmvaDribtCkbg&usqp=CAU&ec=45682160">
 	
 	  <!-- Links -->
@@ -34,15 +34,19 @@
 	      <a class="nav-link" href="/authors">Authors</a>
 	    </li>
 	  </ul>
-	<!-- Go to sign in or sign up form -->  
-	  <div class="col text-center">
-	  	<a class="text-success" href="/authorizationForm">SIGN IN</a>
-	    <p></p>
-	    <p></p>
-	    <a class="text-success" href="/createUser">SIGN UP</a>
+	<!-- Autorization form -->  
+	  <div class="col">
+	  	<form class="ml-auto" action="/adminForm" method="POST">
+	    	<p class="text-success">User E-mail</p>
+	    	<p><input type="email" name="email" placeholder="Insert e-mail"></p>
+	    	<p></p>
+	    	<p class="text-success">User Password</p>
+	    	<p><input type="password" name="password" placeholder="Insert Password"></p>
+	      	<button class="btn btn-success" type="submit">GO</button>	
+	    </form>
 	  </div>
 	  	  
-	  <form class="form-inline ml-auto" action="#">
+	  <form class="form-inline ml-auto" action="">
 	    <input class="form-control mr-sm-2" size="30" type="text" placeholder="Search for books, authors or genres">
 	    <button class="btn btn-success" type="submit">Search</button>
 	  </form>

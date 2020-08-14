@@ -1,5 +1,6 @@
 package com.example.demo.db;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -16,5 +17,15 @@ public interface UserRepositoryInterface extends CrudRepository<User, Long>  {
 	
 	@Query("select u from User u where u.email = ?1 and u.password = ?2")
 	public User findByName(String email, String password);
+	
+	@Query("select u from User u where u.email = ?1")
+	public User findByName(String email);
+	
+	@Query("select u from User u where u.role = ?1")
+	public User findRoleAdmin(String role);
+	
+	@Modifying
+	@Query("update User u set u.role = ?1 where u.email = ?2")
+	public void setRoleAdmin(String role, String email);
 	
 }

@@ -37,11 +37,29 @@ public class UserService {
 		return userRepository.findById(userId);
 	}
 	
+	public User findRoleAdmin(String role) {
+		
+		return userRepository.findRoleAdmin(role);
+	}
+	
+	public void setRoleAdmin(String role, String email) {
+		
+		userRepository.setRoleAdmin(role, email);
+	}
+	
+	public User findByName(String email) {
+		
+		return userRepository.findByName(email);
+	}
+	
 	public User findByName(String email, String password) {
 				
-		User user = userRepository.findByName(email, password);
+		return userRepository.findByName(email, password);
+	}
+	
+	public Long count() {
 		
-		return user;
+		return userRepository.count();
 	}
 	
 	public User loggedInUser() {
