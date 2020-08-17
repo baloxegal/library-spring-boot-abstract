@@ -37,29 +37,34 @@ public class UserService {
 		return userRepository.findById(userId);
 	}
 	
-	public User findRoleAdmin(String role) {
+	public User findRole(String role) {
 		
-		return userRepository.findRoleAdmin(role);
+		return userRepository.findRole(role);
 	}
 	
-	public void setRoleAdmin(String role, String email) {
+	public Iterable<User> findAllByRole(String role) {
 		
-		userRepository.setRoleAdmin(role, email);
+		return userRepository.findAllByRole(role);
 	}
 	
-	public User findByName(String email) {
+	public void setRole(String role, String email) {
 		
-		return userRepository.findByName(email);
+		userRepository.setRole(role, email);
 	}
 	
-	public User findByName(String email, String password) {
+	public User findByEmail(String email) {
+		
+		return userRepository.findByEmail(email);
+	}
+	
+	public User findByEmail(String email, String password) {
 				
-		return userRepository.findByName(email, password);
+		return userRepository.findByEmail(email, password);
 	}
 	
-	public Long count() {
+	public void setFullName(String fullName, String email) {
 		
-		return userRepository.count();
+		userRepository.setFullName(fullName, email);
 	}
 	
 	public User loggedInUser() {
@@ -73,7 +78,7 @@ public class UserService {
 		if(user != null)
 			return user;
 		
-		user = userRepository.findByName(email, password);
+		user = userRepository.findByEmail(email, password);
 		if(user != null)
 			session.setAttribute("user", user);
 		return user;		

@@ -17,21 +17,27 @@ public class AdminController {
 	@Inject	
 	private UserService userService;
 	
-	@GetMapping("/adminForm")
-	public String getAdminForm() {
+	@GetMapping("/authorizationForm")
+	public String getAuthorizationForm() {
 		
-		return "/administrator/adminForm";
+		return "/administrator/authorizationForm";
 	}
 	
-	@PostMapping("/adminForm")
+	@PostMapping("/authorizationForm/adminForm")
 	public String getAdminForm(@RequestParam String email, String password) {
 		
 		User user = userService.login(email, password);
 		
 		if(user != null)
-			return "/administrator/successForm";
+			return "/administrator/adminForm";
 		else
 			return "/administrator/unSuccessForm";
+	}
+	
+	@GetMapping("/authorizationForm/adminForm")
+	public String getAdminForm() {
+		
+		return "/administrator/adminForm";
 	}
 
 }

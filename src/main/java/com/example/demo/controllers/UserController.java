@@ -16,7 +16,7 @@ public class UserController {
 	@Inject
 	private UserService userService;
 	
-	@GetMapping("/users")
+	@GetMapping("/adminForm/modifyUsers/users")
 	public String findAll(Model model) {
 			
 		model.addAttribute("users", userService.findAll());
@@ -39,22 +39,47 @@ public class UserController {
 	@PostMapping("/createUser")
 	public String save(@RequestParam String email, String password, String fullName) {
 
-		if(email.isBlank() || email.isEmpty() || email == null || password.isBlank() || password.isEmpty() || password == null || email == userService.findByName(email).getEmail()) {
+		if(email.isBlank() || email.isEmpty() || email == null || password.isBlank() || password.isEmpty() || password == null || userService.findByEmail(email) != null) {
+			
 			return "/administrator/unSuccessForm";
 		}
 				
 		User user = new User(email, password);
 		
 		userService.save(user);
-				
-		if(userService.count() == 1) {
-			userService.setRoleAdmin("admin", user.getEmail());
+		
+		if(userService.findRole("admin") == null) {
+			userService.setRole("admin", email);
+		}
+		else {
+			userService.setRole("client", email);
 		}
 		
 		if(fullName != null) {
-			userService.findByName(email).setFullName(fullName);
+			userService.setFullName(fullName, email);
 		}
+				
+		return "/administrator/successForm";
+	}
+	
+	@PostMapping("authorizationForm/adminForm/modifyUsers/createUserWithRole")
+	public String save(@RequestParam String email, String password, String fullName, String role) {
+
+		if(email.isBlank() || email.isEmpty() || email == null || password.isBlank() || password.isEmpty() || password == null || userService.findByEmail(email) != null) {
+			
+			return "/administrator/unSuccessForm";
+		}
+				
+		User user = new User(email, password);
 		
+		userService.save(user);
+		
+		userService.setRole("admin", email);
+				
+		if(fullName != null) {
+			userService.setFullName(fullName, email);
+		}
+				
 		return "/administrator/successForm";
 	}
 

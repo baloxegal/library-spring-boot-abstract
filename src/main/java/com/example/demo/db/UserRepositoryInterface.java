@@ -16,16 +16,23 @@ public interface UserRepositoryInterface extends CrudRepository<User, Long>  {
 //		clients.add(new User("Миричика Курунсус"));
 	
 	@Query("select u from User u where u.email = ?1 and u.password = ?2")
-	public User findByName(String email, String password);
+	public User findByEmail(String email, String password);
 	
 	@Query("select u from User u where u.email = ?1")
-	public User findByName(String email);
+	public User findByEmail(String email);
 	
 	@Query("select u from User u where u.role = ?1")
-	public User findRoleAdmin(String role);
+	public User findRole(String role);
+	
+	@Query("select u from User u where u.role = ?1")
+	public Iterable<User> findAllByRole(String role);
 	
 	@Modifying
 	@Query("update User u set u.role = ?1 where u.email = ?2")
-	public void setRoleAdmin(String role, String email);
+	public void setRole(String role, String email);
 	
+	@Modifying
+	@Query("update User u set u.fullName = ?1 where u.email = ?2")
+	public void setFullName(String fullName, String email);
+		
 }
