@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.User;
 
@@ -27,10 +28,12 @@ public interface UserRepositoryInterface extends CrudRepository<User, Long>  {
 	@Query("select u from User u where u.role = ?1")
 	public Iterable<User> findAllByRole(String role);
 	
+	@Transactional
 	@Modifying
 	@Query("update User u set u.role = ?1 where u.email = ?2")
 	public void setRole(String role, String email);
 	
+	@Transactional
 	@Modifying
 	@Query("update User u set u.fullName = ?1 where u.email = ?2")
 	public void setFullName(String fullName, String email);

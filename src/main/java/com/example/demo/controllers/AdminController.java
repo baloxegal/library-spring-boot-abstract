@@ -29,9 +29,9 @@ public class AdminController {
 		User user = userService.login(email, password);
 		
 		if(user != null) {
-			if(user.getRole() == "admin")
+			if(user.getRole() == "admin") {
 				return "/administrator/adminForm";
-			
+			}
 			return "/administrator/successForm";
 		}
 		else
