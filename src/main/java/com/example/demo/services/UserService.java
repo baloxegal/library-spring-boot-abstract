@@ -37,9 +37,9 @@ public class UserService {
 		return userRepository.findById(userId);
 	}
 	
-	public User findRole(String role) {
+	public User findByRole(String role) {
 		
-		return userRepository.findRole(role);
+		return userRepository.findByRole(role);
 	}
 	
 	public Iterable<User> findAllByRole(String role) {
@@ -47,9 +47,9 @@ public class UserService {
 		return userRepository.findAllByRole(role);
 	}
 	
-	public void setRole(String role, String email) {
+	public void setRoleDataBase(String role, String email) {
 		
-		userRepository.setRole(role, email);
+		userRepository.setRoleDataBase(role, email);
 	}
 	
 	public User findByEmail(String email) {
@@ -57,31 +57,39 @@ public class UserService {
 		return userRepository.findByEmail(email);
 	}
 	
-	public User findByEmail(String email, String password) {
+	public User findByEmailAndPass(String email, String password) {
 				
-		return userRepository.findByEmail(email, password);
+		return userRepository.findByEmailAndPass(email, password);
 	}
 	
-	public void setFullName(String fullName, String email) {
+	public void setFullNameDataBase(String fullName, String email) {
 		
-		userRepository.setFullName(fullName, email);
+		userRepository.setFullNameDataBase(fullName, email);
 	}
 	
-	public User loggedInUser() {
+	public User signedInUser(String email) {
 		
-		return (User) session.getAttribute("user");		
+		return (User) session.getAttribute(email);		
 	}
 	
-	public User login(String email, String password) {
+	public User signIn(String email, String password) {
 		
-		User user = loggedInUser();
+		User user = signedInUser(email);
 		if(user != null)
 			return user;
 		
-		user = userRepository.findByEmail(email, password);
+		user = userRepository.findByEmailAndPass(email, password);
 		if(user != null)
-			session.setAttribute("user", user);
+			session.setAttribute(email, user);
 		return user;		
+	}
+	
+	public void signOut() {
+		
+		User user = (User) session.getAttribute("user");
+		if(user != null)
+			session.removeAttribute("user");
+		
 	}
 
 }

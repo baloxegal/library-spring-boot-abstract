@@ -16,7 +16,7 @@ public class UserController {
 	@Inject
 	private UserService userService;
 	
-	@GetMapping("/adminForm/modifyUsers/users")
+	@GetMapping("/adminForm/modifyUsers/findAllUsers")
 	public String findAll(Model model) {
 			
 		model.addAttribute("users", userService.findAll());
@@ -30,6 +30,12 @@ public class UserController {
 		return "/user/modifyUsers";
 	}
 
+	@GetMapping("/authorizationForm/adminForm/modifyUsers/createUserWithRole")
+	public String createUserWithRole() {
+				
+		return "/user/createUserWithRole";
+	}
+	
 	@GetMapping("/createUser")
 	public String createUser() {
 				
@@ -48,21 +54,21 @@ public class UserController {
 		
 		userService.save(user);
 		
-		if(userService.findRole("admin") == null) {
-			userService.setRole("admin", email);
+		if(userService.findByRole("admin") == null) {
+			userService.setRoleDataBase("admin", email);
 		}
 		else {
-			userService.setRole("client", email);
+			userService.setRoleDataBase("client", email);
 		}
 		
 		if(fullName != null) {
-			userService.setFullName(fullName, email);
+			userService.setFullNameDataBase(fullName, email);
 		}
 				
 		return "/administrator/successForm";
 	}
-	
-	@PostMapping("authorizationForm/adminForm/modifyUsers/createUserWithRole")
+		
+	@PostMapping("/authorizationForm/adminForm/modifyUsers/createUserWithRole")
 	public String save(@RequestParam String email, String password, String fullName, String role) {
 
 		if(email.isBlank() || email.isEmpty() || email == null || password.isBlank() || password.isEmpty() || password == null || userService.findByEmail(email) != null) {
@@ -72,13 +78,25 @@ public class UserController {
 				
 		User user = new User(email, password);
 		
+		if(role == "admin")
+			user.setRole(role);
+		else
+			user.setRole("client");
+			
+		if(fullName != null) {
+			user.setFullName(fullName);
+		}
+		
 		userService.save(user);
 		
-		userService.setRole("admin", email);
-				
-		if(fullName != null) {
-			userService.setFullName(fullName, email);
-		}
+//		if(role == "admin")
+//			userService.setRoleDataBase(role, email);
+//		else
+//			userService.setRoleDataBase("client", email);
+//				
+//		if(fullName != null) {
+//			userService.setFullNameDataBase(fullName, email);
+//		}
 				
 		return "/administrator/successForm";
 	}

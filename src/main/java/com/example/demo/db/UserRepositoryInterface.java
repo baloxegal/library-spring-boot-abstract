@@ -17,13 +17,13 @@ public interface UserRepositoryInterface extends CrudRepository<User, Long>  {
 //		clients.add(new User("Миричика Курунсус"));
 	
 	@Query("select u from User u where u.email = ?1 and u.password = ?2")
-	public User findByEmail(String email, String password);
+	public User findByEmailAndPass(String email, String password);
 	
 	@Query("select u from User u where u.email = ?1")
 	public User findByEmail(String email);
 	
 	@Query("select u from User u where u.role = ?1")
-	public User findRole(String role);
+	public User findByRole(String role);
 	
 	@Query("select u from User u where u.role = ?1")
 	public Iterable<User> findAllByRole(String role);
@@ -31,11 +31,11 @@ public interface UserRepositoryInterface extends CrudRepository<User, Long>  {
 	@Transactional
 	@Modifying
 	@Query("update User u set u.role = ?1 where u.email = ?2")
-	public void setRole(String role, String email);
+	public void setRoleDataBase(String role, String email);
 	
 	@Transactional
 	@Modifying
 	@Query("update User u set u.fullName = ?1 where u.email = ?2")
-	public void setFullName(String fullName, String email);
+	public void setFullNameDataBase(String fullName, String email);
 		
 }

@@ -26,7 +26,7 @@ public class AdminController {
 	@PostMapping("/authorizationForm/adminForm")
 	public String getAdminForm(@RequestParam String email, String password) {
 		
-		User user = userService.login(email, password);
+		User user = userService.signIn(email, password);
 		
 		if(user != null) {
 			if(user.getRole() == "admin") {
@@ -42,6 +42,12 @@ public class AdminController {
 	public String getAdminForm() {
 		
 		return "/administrator/adminForm";
+	}
+	
+	@GetMapping("/signOut")
+	public String signOut() {
+		userService.signOut();
+		return "/startPage/index";
 	}
 
 }
