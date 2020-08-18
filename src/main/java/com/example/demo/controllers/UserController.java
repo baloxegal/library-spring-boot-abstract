@@ -30,7 +30,7 @@ public class UserController {
 		return "/user/modifyUsers";
 	}
 
-	@GetMapping("/authorizationForm/adminForm/modifyUsers/createUserWithRole")
+	@GetMapping("/adminForm/modifyUsers/createUserWithRole")
 	public String createUserWithRole() {
 				
 		return "/user/createUserWithRole";
@@ -68,7 +68,7 @@ public class UserController {
 		return "/administrator/successForm";
 	}
 		
-	@PostMapping("/authorizationForm/adminForm/modifyUsers/createUserWithRole")
+	@PostMapping("/modifyUsers/createUserWithRole")
 	public String save(@RequestParam String email, String password, String fullName, String role) {
 
 		if(email.isBlank() || email.isEmpty() || email == null || password.isBlank() || password.isEmpty() || password == null || userService.findByEmail(email) != null) {
