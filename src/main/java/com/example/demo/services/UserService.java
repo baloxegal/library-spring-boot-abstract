@@ -1,5 +1,9 @@
 package com.example.demo.services;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.Optional;
 
 import javax.inject.Inject;
@@ -21,6 +25,11 @@ public class UserService {
 	
 	@Inject
 	private HttpSession session;
+	
+	@Target(ElementType.METHOD)
+	@Retention(RetentionPolicy.RUNTIME)
+	public @interface MySignInInterface{
+	}
 	
 	public Iterable<User> findAll(){
 		
@@ -72,6 +81,7 @@ public class UserService {
 		return (User) session.getAttribute(email);		
 	}
 	
+	//@MySignInInterface
 	public User signIn(String email, String password) {
 		
 		User user = signedInUser(email);
@@ -85,11 +95,13 @@ public class UserService {
 	}
 	
 	public void signOut() {
-		
 		User user = (User) session.getAttribute("user");
-		if(user != null)
+		if(user != null) {
 			session.removeAttribute("user");
-		
+			//OR THIS?
+			session.invalidate();
+		}
+				
 	}
 
 }
