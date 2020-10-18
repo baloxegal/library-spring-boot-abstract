@@ -11,7 +11,7 @@ import com.example.demo.domain.BaseEntity;
 @Repository
 public interface BaseEntityRepositoryInterface <T extends BaseEntity> extends CrudRepository<T, Long> {
 	
-	@Query("select e from ?1 e where e.name = ?2")
-	public Optional<? extends BaseEntity> findByName(String entity, String name);
+	@Query("select e from #{#entityName} e where e.name = ?1")
+	public Optional<T> findByName(String name);
 	
 }

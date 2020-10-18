@@ -77,28 +77,26 @@ public class BaseEntityService {
 		foundEntities.add(authorEntityRepository.findById(Long.parseLong(searchEntity)));
 		foundEntities.add(genreEntityRepository.findById(Long.parseLong(searchEntity)));
 		
-		foundEntities.add(bookEntityRepository.findByName("Book", "name"));
-		foundEntities.add(authorEntityRepository.findByName("Author", "name"));
-		foundEntities.add(genreEntityRepository.findByName("Genre", "name"));
+		foundEntities.add(bookEntityRepository.findByName(searchEntity));
+		foundEntities.add(authorEntityRepository.findByName(searchEntity));
+		foundEntities.add(genreEntityRepository.findByName(searchEntity));
 				
 		return foundEntities;
 	}
 	
 	public Optional<? extends BaseEntity> findByName(String entities, String name){
 		
-		String entity = entities.substring(0, 1).toUpperCase() + entities.substring(1, entities.length() - 1);
-		
 		if(entities.equals("books")) {
-			return bookEntityRepository.findByName(entity, name);
+			return bookEntityRepository.findByName(name);
 		}
 		else if(entities.equals("authors")) {
-			return authorEntityRepository.findByName(entity, name);
+			return authorEntityRepository.findByName(name);
 		}
 		else if(entities.equals("genres")) {
-			return genreEntityRepository.findByName(entity, name);
+			return genreEntityRepository.findByName(name);
 		}
 		else if(entities.equals("users")) {
-			return userEntityRepository.findByName(entity, name);
+			return userEntityRepository.findByName(name);
 		}
 				
 		return null;
