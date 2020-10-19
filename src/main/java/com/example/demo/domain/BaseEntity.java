@@ -6,8 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import org.springframework.stereotype.Service;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -17,7 +15,6 @@ import lombok.ToString;
 
 @NoArgsConstructor @RequiredArgsConstructor @Getter @Setter @ToString
 @MappedSuperclass
-@Service
 public class BaseEntity {
 	
 	@Id

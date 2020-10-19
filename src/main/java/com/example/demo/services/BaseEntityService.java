@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 
-import com.example.demo.db.BaseEntityRepositoryInterface;
-import com.example.demo.domain.Author;
+import com.example.demo.db.AuthorEntityRepositoryInterface;
+import com.example.demo.db.BookEntityRepositoryInterface;
+import com.example.demo.db.GenreEntityRepositoryInterface;
+import com.example.demo.db.UserEntityRepositoryInterface;
 import com.example.demo.domain.BaseEntity;
-import com.example.demo.domain.Book;
-import com.example.demo.domain.Genre;
-import com.example.demo.domain.User;
 
 @Service
 public class BaseEntityService {
@@ -21,16 +21,16 @@ public class BaseEntityService {
 	}
 		
 	@Inject
-	private BaseEntityRepositoryInterface<Book> bookEntityRepository;
+	private BookEntityRepositoryInterface bookEntityRepository;
 	
 	@Inject
-	private BaseEntityRepositoryInterface<Author> authorEntityRepository;
+	private AuthorEntityRepositoryInterface authorEntityRepository;
 	
 	@Inject
-	private BaseEntityRepositoryInterface<Genre> genreEntityRepository;
+	private GenreEntityRepositoryInterface genreEntityRepository;
 	
 	@Inject
-	private BaseEntityRepositoryInterface<User> userEntityRepository;
+	private UserEntityRepositoryInterface userEntityRepository;
 		
 	public Iterable<? extends BaseEntity> findAll(String entities){
 		
@@ -46,7 +46,7 @@ public class BaseEntityService {
 		else if(entities.equals("users")) {
 			return userEntityRepository.findAll();
 		}
-				
+
 		return null;
 	}
 		
@@ -64,7 +64,7 @@ public class BaseEntityService {
 		else if(entities.equals("users")) {
 			return userEntityRepository.findById(baseEntityId);
 		}
-				
+
 		return null;
 	
 	}
@@ -82,6 +82,7 @@ public class BaseEntityService {
 		foundEntities.add(genreEntityRepository.findByName(searchEntity));
 				
 		return foundEntities;
+		
 	}
 	
 	public Optional<? extends BaseEntity> findByName(String entities, String name){
@@ -98,7 +99,7 @@ public class BaseEntityService {
 		else if(entities.equals("users")) {
 			return userEntityRepository.findByName(name);
 		}
-				
+
 		return null;
 	
 	}
