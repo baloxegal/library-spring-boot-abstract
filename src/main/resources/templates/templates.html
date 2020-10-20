@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+  
+    <!--FRAGMENT START PAGE-->
+	<div th:fragment="startPage" class="container text-center font-weight-bold">
+		<h2>START PAGE Best Sellers</h2>
+			<div class="row">
+			  <div class="col" th:each="book : ${books}">
+			  	<a href="books"><img th:src="${book.cover}" class="rounded mx-auto d-block" style="width:183px;height:275px"></a>
+			  	<a class="h4" href="books" th:text="${book.name}">Title</a>
+			  	<p><a class="h5" href="authors" th:text="${book.author.name}">Author</a></p>
+			  	<p class="h6"><span th:text="${book.year}">Year</span> год</p>
+			  	<p class="h6">жанр: <a class="h6" href="genres" th:text="${book.genre.name}">Genre</a></p>
+			  	<p>available</p>
+			  	<button type="button" class="btn btn-primary btn-block">Buy</button>
+			  </div>
+			</div>
+		<h2>Get Fresh Books </h2>
+			<div class="row">
+			  <div class="col" th:each="book : ${books}">
+			  	<a href="books"><img th:src="${book.cover}" class="rounded mx-auto d-block" style="width:183px;height:275px"></a>
+			  	<a class="h4" href="books" th:text="${book.name}">Title</a>
+			  	<p><a class="h5" href="authors" th:text="${book.author.name}">Author</a></p>
+			  	<p class="h6"><span th:text="${book.year}">Year</span> год</p>
+			  	<p class="h6">жанр: <a class="h6" href="genres" th:text="${book.genre.name}">Genre</a></p>
+			  	<p>available</p>
+			  	<button type="button" class="btn btn-success btn-block">GET</button>
+			  </div>
+			</div>
+		<h2>We Have</h2>
+			<div class="row">
+			  <div class="col">
+			  	<p>books</p>
+			  	<p>1000</p>
+			  </div>
+			  <div class="col">
+			  	<p>authors</p>
+			  	<p>100</p>
+			  </div>
+			  <div class="col">
+			  	<p>genres</p>
+			  	<p>100</p>
+			  </div>
+			</div>
+	</div>
+	
+	<!--FRAGMENT VIEW ALL ENTITIES-->
+	<div th:fragment="viewAllEntities" class="container text-center font-weight-bold">
+		<h2>START PAGE Best Sellers</h2>
+		<div class="row">
+		  <div class="col" th:each="entity : ${entities}">
+		  	<div class="col" th:each="field : ${fields}">
+		  		<a class="h4" th:text="${field}"></a>
+		  	</div>
+		  	<button type="button" class="btn btn-primary btn-block">Buy</button>
+		  </div>	
+		</div>
+	</div>	
+		
+  </body>
+</html>

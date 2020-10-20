@@ -104,4 +104,21 @@ public class BaseEntityService {
 	
 	}
 	
+	public void save(String entities, BaseEntity baseEntity){
+		
+		if(entities.equals("books")) {
+			bookEntityRepository.save(baseEntity);
+		}
+		else if(entities.equals("authors")) {
+			authorEntityRepository.findByName(name);
+		}
+		else if(entities.equals("genres")) {
+			genreEntityRepository.findByName(name);
+		}
+		else if(entities.equals("users")) {
+			userEntityRepository.findByName(name);
+		}
+	
+	}
+	
 }

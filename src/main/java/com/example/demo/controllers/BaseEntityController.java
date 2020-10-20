@@ -1,5 +1,8 @@
 package com.example.demo.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.db.BookEntityRepositoryInterface;
+import com.example.demo.domain.BaseEntity;
 import com.example.demo.services.BaseEntityService;
 
 @Controller
@@ -24,11 +29,13 @@ public class BaseEntityController {
 	@ResponseBody
 	public String findAll(@PathVariable("entities") String entities, Model model) {
 		
+		List<? extends BaseEntity> be = new ArrayList<>();
 		
-		model.addAttribute(entities, baseEntityService.findAll(entities));
+		model.addAttribute(entities, be);
+		model.addAttribute("fields", be.get(0).getClass().getFields());
+				
+		return "/index";
 		
-//		return "/entities/view_all";
-		return "This is BaseEntity Controller for view all entities of " + entities + "!!!";
 	}
 	
 	@PostMapping("/byId")
@@ -37,8 +44,8 @@ public class BaseEntityController {
 		
 		baseEntityService.findById(entities, baseEntityId);
 		
-//		return "/{entities}/view_by_id";
-		return "This is BaseEntity Controller for view entity of " + entities + " by id " + baseEntityId + " !!!";
+		return "/index";
+		
 	}
 		
 }
